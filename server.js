@@ -28,8 +28,9 @@ app.use(require('./routes/htmlRoutes'));
 app.use(require('./routes/apiRoutes'));
 
 app.get('/testdb', function(req, res) {
-  db.Article.create({headline: 'Debby'});
+  db.Comment.create({title: 'New Title'});
   console.log(db.Article);
+  res.send('test');
 });
 
 app.listen(PORT, function() {
