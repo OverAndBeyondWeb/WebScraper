@@ -20,9 +20,8 @@ app.engine('handlebars', exhbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 //routes
-app.get('/', function(req, res) {
-  res.render('index');
-});
+app.use(require('./routes/htmlRoutes'));
+app.use(require('./routes/apiRoutes'));
 
 app.listen(PORT, function() {
   console.log('app listening on port: ' + PORT);
