@@ -29,9 +29,17 @@ app.use(require('./routes/apiRoutes'));
 
 //testing route
 app.get('/testdb', function(req, res) {
-  db.Comment.create({title: 'New Title'});
-  console.log(db.Article);
-  res.send('test');
+  var url = 'https://news.artnet.com/art-world';
+  request(url, function(err, resp, body) {
+    var $ = cheerio.load(body);
+    var articles = $('.media');//array
+    articles.each(function(i, article) {
+      console.log($(article).find('.teaser-title').text());
+    });
+    
+    res.end('butter');
+  });
+ 
 });
 
 app.listen(PORT, function() {
