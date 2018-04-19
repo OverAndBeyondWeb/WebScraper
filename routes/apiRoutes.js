@@ -1,12 +1,15 @@
 var express = require('express');
 var router = express.Router();
+var db = require('../models');
 
-router.get('/api', function(req, res) {
-  var obj = {
-    route: 'api',
-    page: 'page 1'
-  }
-  res.json(obj);
+router.get('/api/all', function(req, res) {
+  db.Article.find({}).then(function(articles) {
+    res.json(articles);
+  })
+  .catch(function(err) {
+    console.log(err);
+  });
+  
 });
 
 router.get('/api/page2', function(req, res) {

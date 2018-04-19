@@ -10,11 +10,13 @@ router.post('/scrape', function(req, res) {
     var $ = cheerio.load(body);
     var articles = $('.media');//array
     var data = [];
-    articles.each(function(i, article) {
-      console.log($(article).find('.teaser-title').text());
-     
-      db.Article.create({headline: $(article).find('.teaser-title').text()});
-      data.push({headline: $(article).find('.teaser-title').text()});
+    articles.each(function(i, article) {     
+      db.Article.create({
+        headline: $(article).find('.teaser-title').text(),
+        summary: $(article).find('.teaser-blurb').text(),
+        url: $(article).find('a').attr('href')
+      });
+      data.push({headline: $(article).find('a').attr('href')});
     });
     
     res.json(data);
