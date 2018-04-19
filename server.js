@@ -3,9 +3,7 @@ var exhbs = require('express-handlebars');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var cheerio = require('cheerio');
-var request = require('request');
 
-var db = require('./models');
 var PORT = process.env.PORT || 3000;
 
 var app = express();
@@ -26,6 +24,7 @@ mongoose.connect('mongodb://localhost/testDB');
 //routes
 app.use(require('./routes/htmlRoutes'));
 app.use(require('./routes/apiRoutes'));
+app.use(require('./routes/scrapeRoutes'));
 
 //testing route
 app.get('/testdb', function(req, res) {
