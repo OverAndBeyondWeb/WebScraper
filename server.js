@@ -27,6 +27,7 @@ mongoose.connect('mongodb://localhost/testDB');
 app.use(require('./routes/htmlRoutes'));
 app.use(require('./routes/apiRoutes'));
 
+//testing route
 app.get('/testdb', function(req, res) {
   db.Comment.create({title: 'New Title'});
   console.log(db.Article);
