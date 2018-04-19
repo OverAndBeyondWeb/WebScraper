@@ -35,6 +35,7 @@ app.get('/testdb', function(req, res) {
     var articles = $('.media');//array
     articles.each(function(i, article) {
       console.log($(article).find('.teaser-title').text());
+      db.Article.create({headline: $(article).find('.teaser-title').text()});
     });
     
     res.end('butter');
