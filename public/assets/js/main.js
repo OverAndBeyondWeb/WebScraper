@@ -1,1 +1,1 @@
-console.log('hi');
+$('.articles').text('these are the articles');
