@@ -142,3 +142,15 @@ main {
   border-color: rosybrown;
 }
 
+.saved-articles {
+  width: 90%;
+  max-width: 1400px;
+  background: wheat;
+  color: darkblue;
+  font-size: 1.25em;
+  text-shadow: 1px 1px 1px rosybrown;
+  margin: 0 auto;
+  padding: 8px;
+  border-color: rosybrown;
+}
+

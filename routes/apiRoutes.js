@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('../models');
 
-router.get('/api/all', function(req, res) {
+router.get('/api/saved-articles', function(req, res) {
   db.Article.find({}).then(function(articles) {
     res.json(articles);
   })

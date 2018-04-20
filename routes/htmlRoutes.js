@@ -5,11 +5,8 @@ router.get('/', function(req, res) {
   res.render('index');
 });
 
-router.get('/page2', function(req, res) {
-  res.send('<h1>Page 2</h1>');
+router.get('/saved-articles', function(req, res) {
+  res.render('saved-articles');
 });
-
-
-
 
 module.exports = router;
