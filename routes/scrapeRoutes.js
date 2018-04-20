@@ -11,12 +11,16 @@ router.post('/scrape', function(req, res) {
     var articles = $('.media');//array
     var data = [];
     articles.each(function(i, article) {     
-      db.Article.create({
+      // db.Article.create({
+      //   headline: $(article).find('.teaser-title').text(),
+      //   summary: $(article).find('.teaser-blurb').text(),
+      //   url: $(article).find('a').attr('href')
+      // });
+      data.push({
         headline: $(article).find('.teaser-title').text(),
         summary: $(article).find('.teaser-blurb').text(),
         url: $(article).find('a').attr('href')
       });
-      data.push({headline: $(article).find('a').attr('href')});
     });
     
     res.json(data);
