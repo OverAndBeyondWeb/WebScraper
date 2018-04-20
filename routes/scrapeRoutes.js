@@ -11,11 +11,7 @@ router.post('/scrape', function(req, res) {
     var articles = $('.media');//array
     var data = [];
     articles.each(function(i, article) {     
-      // db.Article.create({
-      //   headline: $(article).find('.teaser-title').text(),
-      //   summary: $(article).find('.teaser-blurb').text(),
-      //   url: $(article).find('a').attr('href')
-      // });
+      
       data.push({
         headline: $(article).find('.teaser-title').text(),
         summary: $(article).find('.teaser-blurb').text(),
@@ -26,6 +22,11 @@ router.post('/scrape', function(req, res) {
     res.json(data);
   });
  
+});
+
+router.post('/saved-articles', function(req, res) {
+  console.log(req.body);
+  db.Article.create(req.body);
 });
 
 module.exports = router;

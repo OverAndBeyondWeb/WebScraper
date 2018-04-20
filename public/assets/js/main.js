@@ -18,5 +18,21 @@ $('.scrape').click(function() {
     // $.get('api/all', function(data) {
       console.log(data);
     // });
+    
+  }).then(function() {
+    $('.article').on('click', '.save-btn', function() {
+      var articleContent = $(this).parent().find('.article-content');
+      var articleContentObj = {
+        headline: articleContent.find('.article-title').text(),
+        summary: articleContent.find('.article-summary').text(),
+        url: articleContent.find('.article-url').text()
+      }
+      console.log(articleContentObj);
+
+      $.post('/saved-articles', articleContentObj, function() {
+        
+      });
+    });
   });
 });
+
