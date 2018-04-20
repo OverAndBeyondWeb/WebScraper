@@ -1,5 +1,7 @@
 $('.get-articles').click(function() {
   $.post('/scrape', function(data) {
-    console.log(data);
+    $.get('api/all', function(data) {
+      console.log(data);
+    });
   });
 });
