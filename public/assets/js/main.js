@@ -1,3 +1,5 @@
+
+//Populate '/saved-articles when site loads
 $.get('/api/saved-articles', function(data) {
   data.forEach(function(article) {
 
@@ -11,10 +13,30 @@ $.get('/api/saved-articles', function(data) {
     articleContent.append('<div class="article-url">' + article.url + '</div>');
 
     articleEl.append(articleContent);
-    articleEl.append('<button class="save-btn">delete</button>');
+   
+    var buttons = '<span class="article-btns">' +
+      '<button class="add-note">Add Note</button>' +
+      '<button class="delete-btn">Delete</button>' +
+      '</span>';
+
+    articleEl.append(buttons);
+
+    var notepad = '<form  action="/note" method="POST" id="notepad">' +
+      '<textarea name="note" class="note" form="usrform " cols="30" rows="10">Enter note here...</textarea>' +
+      '<button type="submit" id="submit-note">Save Note</button>' +
+      '</form>'
+
+    articleEl.append(notepad);
 
     $('.saved-articles').append(articleEl);
   });
+}).then(function() {
+  
+  $('.article').on('click', '.add-note', function() {
+    console.log('added a note');
+    $('.modal').css('display', 'block');
+    $('.modal-content').css('display', 'block');
+  })
 });
 
 $('.scrape').click(function() {

@@ -4,6 +4,11 @@
   padding: 0;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 html {
   height: 100%;
 }
@@ -28,7 +33,6 @@ body {
   top: 150px;
   left: 50%;
   transform: translateX(-50%);
-  display: none;
 }
 
 .modal-component {
@@ -38,7 +42,6 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  display: none;
 }
 
 .close-btn {
@@ -132,7 +135,7 @@ main {
   float: left;
 }
 
-.save-btn {
+.save-btn, .delete-btn, .add-note, #submit-note  {
   float: right;
   background: wheat;
   color: darkblue;
@@ -154,3 +157,15 @@ main {
   border-color: rosybrown;
 }
 
+.article-btns {
+  float: right;
+}
+
+#notepad {
+  width: 100%;
+  clear: both;
+}
+
+.note {
+  width: 100%;
+}
