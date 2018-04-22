@@ -60,6 +60,7 @@ header {
   height: 75px;
   background: steelblue;
   border-bottom: 2px solid darkblue;
+  margin-bottom: 20px;
 }
 
 .header-container {
@@ -141,6 +142,7 @@ main {
   color: darkblue;
   font-size: 1.25em;
   text-shadow: 1px 1px 1px rosybrown;
+  margin: 20px;
   padding: 8px;
   border-color: rosybrown;
 }
@@ -154,7 +156,10 @@ main {
   text-shadow: 1px 1px 1px rosybrown;
   margin: 0 auto;
   padding: 8px;
-  border-color: rosybrown;
+  border-radius: 2px;
+  border: 1px solid wheat;
+  box-shadow: 1px 1px 20px wheat,
+    -1px -1px 4px wheat;
 }
 
 .article-btns {

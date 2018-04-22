@@ -21,12 +21,7 @@ $.get('/api/saved-articles', function(data) {
 
     articleEl.append(buttons);
 
-    var notepad = '<form  action="/note" method="POST" id="notepad">' +
-      '<textarea name="note" class="note" form="usrform " cols="30" rows="10">Enter note here...</textarea>' +
-      '<button type="submit" id="submit-note">Save Note</button>' +
-      '</form>'
-
-    articleEl.append(notepad);
+    
 
     $('.saved-articles').append(articleEl);
   });
@@ -42,6 +37,16 @@ $.get('/api/saved-articles', function(data) {
       }
     });
   })
+
+  $('.article').on('click', '.add-note', function() {
+    var currentArticle = ($(this).parent().parent());
+    var notepad = '<form  action="/note" method="POST" class="notepad">' +
+      '<textarea name="note" class="note" cols="30" rows="10" placeholder="Enter note here..."></textarea>' +
+      '<button type="submit" id="submit-note">Save Note</button>' +
+      '</form>'
+
+    currentArticle.append(notepad);
+  });
 });
 
 $('.scrape').click(function() {
