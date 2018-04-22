@@ -25,8 +25,13 @@ router.post('/scrape', function(req, res) {
 });
 
 router.post('/saved-articles', function(req, res) {
-  console.log(req.body);
   db.Article.create(req.body);
+});
+
+router.delete('/delete-article/:id', function(req, res) {
+  db.Article.findByIdAndRemove( req.params.id, function() {
+    res.send('deleted');
+  })
 });
 
 module.exports = router;

@@ -16,7 +16,7 @@ $.get('/api/saved-articles', function(data) {
    
     var buttons = '<span class="article-btns">' +
       '<button class="add-note">Add Note</button>' +
-      '<button class="delete-btn">Delete</button>' +
+      '<button class="delete-btn" data-id="' + article._id + '">Delete</button>' +
       '</span>';
 
     articleEl.append(buttons);
@@ -32,10 +32,15 @@ $.get('/api/saved-articles', function(data) {
   });
 }).then(function() {
   
-  $('.article').on('click', '.add-note', function() {
-    console.log('added a note');
-    $('.modal').css('display', 'block');
-    $('.modal-content').css('display', 'block');
+  $('.article').on('click', '.delete-btn', function(e) {
+    var id = $(e.target).attr('data-id');
+    $.ajax({
+      type: 'DELETE',
+      url: '/delete-article/' + id,
+      success: function() {
+        window.location.href = '/saved-articles'
+      }
+    });
   })
 });
 
