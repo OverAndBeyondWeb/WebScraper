@@ -39,13 +39,21 @@ $.get('/api/saved-articles', function(data) {
   })
 
   $('.article').on('click', '.add-note', function() {
-    var currentArticle = ($(this).parent().parent());
-    var notepad = '<form  action="/note" method="POST" class="notepad">' +
-      '<textarea name="note" class="note" cols="30" rows="10" placeholder="Enter note here..."></textarea>' +
-      '<button type="submit" id="submit-note">Save Note</button>' +
-      '</form>'
+    if($(this).hasClass('open')) {
+      $('.notepad').remove();
+      $('.add-note').text('Add Note').removeClass('open');
 
-    currentArticle.append(notepad);
+    } else {
+      var currentArticle = ($(this).parent().parent());
+      $(this).text('Close Note').addClass('open');
+      var notepad = '<form  action="/note" method="POST" class="notepad">' +
+        '<textarea name="note" class="note" cols="30" rows="10" placeholder="Enter note here..."></textarea>' +
+        '<button type="submit" id="submit-note">Save Note</button>' +
+        '</form>'
+
+      currentArticle.append(notepad);
+    }
+    
   });
 });
 
