@@ -14,9 +14,8 @@ router.get('/api/saved-articles', function(req, res) {
 
 router.get('/api/saved-articles/:id', function(req, res) {
   db.Article.findOne({_id: req.params.id})
-    .populate('comment')
+    .populate('comments')
     .then(function(article) {
-      console.log(article);
        res.json(article);
     })
     .catch(function(err) {

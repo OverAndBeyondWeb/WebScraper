@@ -60,13 +60,6 @@ $.get('/api/saved-articles', function(data) {
     }
   });
 
-  // $('.article').on('click', '#submit-note', function() {
-  //   console.log('hit');
-  //   $('.notepad').remove();
-  //   $('.add-note').text('Add Note').removeClass('open');
-  //   alert('Comment was successfully saved');
-  //   //window.location.href = '/api/saved-articles';
-  // });
 });
 
 $('.scrape').click(function() {
@@ -81,14 +74,10 @@ $('.scrape').click(function() {
       articleContent.append('<div class="article-url">' + article.url + '</div>');
 
       articleEl.append(articleContent);
-      articleEl.append('<button class="save-btn">Save Article</button>');
+      articleEl.append('<button class="btn save-btn">Save Article</button>');
 
       $('.articles').append(articleEl);
     });
-    
-    // $.get('api/all', function(data) {
-      console.log(data);
-    // });
     
   }).then(function() {
     $('.article').on('click', '.save-btn', function() {
@@ -98,7 +87,6 @@ $('.scrape').click(function() {
         summary: articleContent.find('.article-summary').text(),
         url: articleContent.find('.article-url').text()
       }
-      console.log(articleContentObj);
 
       $.post('/saved-articles', articleContentObj, function() {
         

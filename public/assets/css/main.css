@@ -126,6 +126,12 @@ main {
   color: darkblue;
 }
 
+.article::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
 .btn {
   background: wheat;
   color: darkblue;
@@ -144,7 +150,7 @@ main {
   float: left;
 }
 
-.saved-articles {
+.saved-articles, .single-article {
   width: 90%;
   max-width: 1400px;
   background: wheat;
