@@ -39,7 +39,7 @@ router.post('/note', function(req, res) {
   db.Comment.create({title: req.body.title, body: req.body.comment})
     .then(function(comment) {
       console.log(comment);
-      return db.Article.findOneAndUpdate({_id: req.body.id}, {comment: comment._id}, {new: true});
+      return db.Article.findOneAndUpdate({_id: req.body.id}, {$push: {comments: comment._id}}, {new: true});
     })
     .then(function(article) {
       console.log(article);
