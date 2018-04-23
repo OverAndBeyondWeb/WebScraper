@@ -12,12 +12,17 @@ router.get('/api/saved-articles', function(req, res) {
   
 });
 
-router.get('/api/page2', function(req, res) {
-  var obj = {
-    route: 'api',
-    page: 'page 2'
-  }
-  res.json(obj);
+router.get('/api/saved-articles/:id', function(req, res) {
+  db.Article.findOne({_id: req.params.id})
+    .populate('comment')
+    .then(function(article) {
+      console.log(article);
+       res.json(article);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+ 
 });
 
 

@@ -34,4 +34,18 @@ router.delete('/delete-article/:id', function(req, res) {
   })
 });
 
+router.post('/note', function(req, res) {
+  console.log(req.body.id);
+  db.Comment.create({title: req.body.title, body: req.body.comment})
+    .then(function(comment) {
+      console.log(comment);
+      return db.Article.findOneAndUpdate({_id: req.body.id}, {comment: comment._id}, {new: true});
+    })
+    .then(function(article) {
+      console.log(article);
+    });
+
+  res.end();
+});
+
 module.exports = router;

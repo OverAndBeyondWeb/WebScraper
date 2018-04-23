@@ -166,11 +166,15 @@ main {
   float: right;
 }
 
-#notepad {
+.notepad {
   width: 100%;
   clear: both;
 }
 
-.note {
+.title {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.comment {
   width: 100%;
 }

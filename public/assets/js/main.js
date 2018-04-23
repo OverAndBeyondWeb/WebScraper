@@ -15,7 +15,7 @@ $.get('/api/saved-articles', function(data) {
     articleEl.append(articleContent);
    
     var buttons = '<span class="article-btns">' +
-      '<button class="add-note">Add Note</button>' +
+      '<button class="add-note" data-id="' + article._id + '">Add Note</button>' +
       '<button class="delete-btn" data-id="' + article._id + '">Delete</button>' +
       '</span>';
 
@@ -38,7 +38,9 @@ $.get('/api/saved-articles', function(data) {
     });
   })
 
-  $('.article').on('click', '.add-note', function() {
+  $('.article').on('click', '.add-note', function(e) {
+
+    var id = $(e.target).attr('data-id');
     if($(this).hasClass('open')) {
       $('.notepad').remove();
       $('.add-note').text('Add Note').removeClass('open');
@@ -47,14 +49,23 @@ $.get('/api/saved-articles', function(data) {
       var currentArticle = ($(this).parent().parent());
       $(this).text('Close Note').addClass('open');
       var notepad = '<form  action="/note" method="POST" class="notepad">' +
-        '<textarea name="note" class="note" cols="30" rows="10" placeholder="Enter note here..."></textarea>' +
+        '<input type="text" name="title" class="title" placeholder="Title your comment...">' +
+        '<textarea name="comment" class="comment" cols="30" rows="10" placeholder="Enter comment here..."></textarea>' +
         '<button type="submit" id="submit-note">Save Note</button>' +
+        '<input type="hidden" name="id" value="' + id + '">'
         '</form>'
 
       currentArticle.append(notepad);
     }
-    
   });
+
+  // $('.article').on('click', '#submit-note', function() {
+  //   console.log('hit');
+  //   $('.notepad').remove();
+  //   $('.add-note').text('Add Note').removeClass('open');
+  //   alert('Comment was successfully saved');
+  //   //window.location.href = '/api/saved-articles';
+  // });
 });
 
 $('.scrape').click(function() {
