@@ -126,18 +126,7 @@ main {
   color: darkblue;
 }
 
-.article::after {
-  display: block;
-  content: "";
-  clear: both;
-}
-
-.article-content {
-  float: left;
-}
-
-.save-btn, .delete-btn, .add-note, #submit-note  {
-  float: right;
+.btn {
   background: wheat;
   color: darkblue;
   font-size: 1.25em;
@@ -145,6 +134,14 @@ main {
   margin: 20px;
   padding: 8px;
   border-color: rosybrown;
+}
+
+.save-btn, .delete-btn, .add-note, #submit-note {
+  float: right;
+}
+
+.view-article {
+  float: left;
 }
 
 .saved-articles {
@@ -163,11 +160,23 @@ main {
 }
 
 .article-btns {
-  float: right;
+  width: 100%;
+}
+
+.article-btns::after {
+  display: block;
+  content: "";
+  clear: both;
 }
 
 .notepad {
   width: 100%;
+  clear: both;
+}
+
+.notepad::after {
+  display: block;
+  content: "";
   clear: both;
 }
 

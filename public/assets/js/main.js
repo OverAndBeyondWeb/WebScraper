@@ -14,10 +14,11 @@ $.get('/api/saved-articles', function(data) {
 
     articleEl.append(articleContent);
    
-    var buttons = '<span class="article-btns">' +
-      '<button class="add-note" data-id="' + article._id + '">Add Note</button>' +
-      '<button class="delete-btn" data-id="' + article._id + '">Delete</button>' +
-      '</span>';
+    var buttons = '<div class="article-btns">' +
+      '<a href="/saved-articles/' + article._id + '"><button class="btn view-article">View Article</button></a>' +
+      '<button class="btn add-note" data-id="' + article._id + '">Add Comment</button>' +
+      '<button class="btn delete-btn" data-id="' + article._id + '">Delete Article</button>' +
+      '</div>';
 
     articleEl.append(buttons);
 
@@ -43,15 +44,15 @@ $.get('/api/saved-articles', function(data) {
     var id = $(e.target).attr('data-id');
     if($(this).hasClass('open')) {
       $('.notepad').remove();
-      $('.add-note').text('Add Note').removeClass('open');
+      $('.add-note').text('Add Comment').removeClass('open');
 
     } else {
       var currentArticle = ($(this).parent().parent());
-      $(this).text('Close Note').addClass('open');
+      $(this).text('Close Comment').addClass('open');
       var notepad = '<form  action="/note" method="POST" class="notepad">' +
         '<input type="text" name="title" class="title" placeholder="Title your comment...">' +
         '<textarea name="comment" class="comment" cols="30" rows="10" placeholder="Enter comment here..."></textarea>' +
-        '<button type="submit" id="submit-note">Save Note</button>' +
+        '<button type="submit" id="submit-note" class="btn">Save Comment</button>' +
         '<input type="hidden" name="id" value="' + id + '">'
         '</form>'
 
