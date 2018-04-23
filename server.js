@@ -19,7 +19,9 @@ app.engine('handlebars', exhbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 //db connection
-mongoose.connect('mongodb://localhost/testDB');
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 
 //routes
 app.use(require('./routes/htmlRoutes'));
